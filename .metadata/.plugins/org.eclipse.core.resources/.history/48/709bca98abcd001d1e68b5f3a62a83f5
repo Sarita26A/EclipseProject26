@@ -1,0 +1,17 @@
+package SelenniumFramework.PageObjectModel;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import SelenniumFramework.TestComponent.BaseTest;
+
+public class ErrorvalidationTest extends BaseTest{
+	
+	@Test
+	public void loginPagevalidation() 
+	{
+		loginPage.loginToApplication("sarita_25a@yahoo.co.in", "Market12345^");
+		Assert.assertEquals("Invalid username and password", loginPage.getErrorMessage());
+	}
+
+}

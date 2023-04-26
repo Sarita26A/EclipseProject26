@@ -1,0 +1,33 @@
+package SelenniumFramework.TestComponent;
+
+import org.testng.ITestListener;
+import org.testng.ITestResult;
+import com.aventstack.extentreports.ExtentReports;
+
+import SelenniumFramework.Resources.ExtentReportTestNG;
+
+public class Listener implements ITestListener{
+	ExtentReports extent=ExtentReportTestNG.getReportObject();
+	
+	@Override
+	public void onTestStart(ITestResult result) {
+		
+		extent.createTest(result.getMethod().getMethodName());
+		
+	}
+	@Override
+	public void onTestSuccess(ITestResult result) 
+	{
+		
+	}
+	@Override
+	public void onTestFailure(ITestResult result) 
+	{
+		
+	}
+	@Override
+	public void onTestSkipped(ITestResult result) 
+	{
+		
+	}
+}

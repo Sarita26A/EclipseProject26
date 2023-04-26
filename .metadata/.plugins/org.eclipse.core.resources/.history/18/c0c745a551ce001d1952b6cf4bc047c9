@@ -1,0 +1,39 @@
+package SelenniumFramework.PageObjectModel;
+
+import java.io.IOException;
+import java.util.List;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import SelenniumFramework.TestComponent.BaseTest;
+
+public class SubmitOrderTest extends BaseTest{
+    
+  @Test
+  public void SubmitOrder() throws InterruptedException, IOException 
+  
+  {	
+	 String countryName="India";
+	 String productName="ZARA COAT 3";
+	 ProductCatalogue productCatalogue=loginPage.loginToApplication("sarita_25a@yahoo.co.in", "Market12345^");
+	 List<WebElement> products=productCatalogue.getProductList();
+	 productCatalogue.addProductToCart(productName);
+	 productCatalogue.gotoCart();
+	 CartPage cartPage=new CartPage(driver);
+	 Boolean match= cartPage.productsInCartPage(productName);
+	 Assert.assertTrue(match);
+	 CheckOut checkOut=cartPage.gotoCheckout();
+	 checkOut.selectCountry(countryName);
+	 ConfirmationPage confirmationPage=checkOut.submitOrder();
+	 String confirmationMessage=confirmationPage.getConfirmationMessage();
+	 System.out.println(confirmationMessage);
+	 Assert.assertTrue(confirmationMessage.equalsIgnoreCase("THANKYOU FOR THE ORDER."));
+	 
+  }
+	  
+	
+	  
+    
+  
+}

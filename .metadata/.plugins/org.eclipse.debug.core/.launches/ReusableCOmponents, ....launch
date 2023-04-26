@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.testng.eclipse.launchconfig">
+    <stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.eclipse.m2e.launchconfig.classpathProvider"/>
+    <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.testng.remote.RemoteTestNG"/>
+    <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="PageObjectModel"/>
+    <stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.m2e.launchconfig.sourcepathProvider"/>
+    <mapAttribute key="org.testng.eclipse.ALL_CLASS_METHODS">
+        <mapEntry key="SeleniumFrameWork.Data.DataReader" value="getJsonDataToMap"/>
+        <mapEntry key="SeleniumFramework.ReusableComponents.ReusableCOmponents" value="waitForElementToDisappear;ReusableCOmponents;waitForElementToAppear;gotoOrderPage;waitForWebElementToAppear;gotoCart"/>
+        <mapEntry key="SelenniumFramework.PageObjectModel.App" value="main"/>
+        <mapEntry key="SelenniumFramework.PageObjectModel.CartPage" value="productsInCartPage;CartPage;gotoCheckout"/>
+        <mapEntry key="SelenniumFramework.PageObjectModel.CheckOut" value="CheckOut;submitOrder;selectCountry"/>
+        <mapEntry key="SelenniumFramework.PageObjectModel.ConfirmationPage" value="getConfirmationMessage;ConfirmationPage"/>
+        <mapEntry key="SelenniumFramework.PageObjectModel.ErrorvalidationTest" value="loginPagevalidation;productValidationTest"/>
+        <mapEntry key="SelenniumFramework.PageObjectModel.LoginPage" value="loginToApplication;getErrorMessage;gotoLoginPage;LoginPage"/>
+        <mapEntry key="SelenniumFramework.PageObjectModel.OrderPage" value="OrderPage;orderPageSelectItem"/>
+        <mapEntry key="SelenniumFramework.PageObjectModel.ProductCatalogue" value="getProductList;addProductToCart;ProductCatalogue;getProductByName"/>
+        <mapEntry key="SelenniumFramework.PageObjectModel.StandAlonewithExtentReport" value="initialDemo;reportsConfig"/>
+        <mapEntry key="SelenniumFramework.PageObjectModel.SubmitOrderTest" value="orderHistoryTest;SubmitOrder"/>
+        <mapEntry key="SelenniumFramework.PageObjectModel.SubmitOrderWithHashMapTest" value="getDataInHashMapForm;SubmitOrderwithDataParovider"/>
+        <mapEntry key="SelenniumFramework.Resources.ExtentReportTestNG" value="getReportObject"/>
+        <mapEntry key="SelenniumFramework.TestComponent.BaseTest" value="initializeDriver;getScreenShot;launchApplication;tearDown"/>
+        <mapEntry key="SelenniumFramework.TestComponent.Listener" value="onFinish;onTestSkipped;onTestSuccess;onTestStart;onTestFailure"/>
+        <mapEntry key="SelenniumFramework.TestComponent.Retry" value="retry"/>
+    </mapAttribute>
+    <listAttribute key="org.testng.eclipse.CLASS_TEST_LIST">
+        <listEntry value="SelenniumFramework.PageObjectModel.ProductCatalogue"/>
+        <listEntry value="SelenniumFramework.Resources.ExtentReportTestNG"/>
+        <listEntry value="SelenniumFramework.PageObjectModel.LoginPage"/>
+        <listEntry value="SelenniumFramework.TestComponent.Listener"/>
+        <listEntry value="SelenniumFramework.PageObjectModel.OrderPage"/>
+        <listEntry value="SelenniumFramework.PageObjectModel.CheckOut"/>
+        <listEntry value="SelenniumFramework.PageObjectModel.ConfirmationPage"/>
+        <listEntry value="SelenniumFramework.PageObjectModel.CartPage"/>
+        <listEntry value="SelenniumFramework.PageObjectModel.SubmitOrderWithHashMapTest"/>
+        <listEntry value="SelenniumFramework.PageObjectModel.App"/>
+        <listEntry value="SelenniumFramework.TestComponent.Retry"/>
+        <listEntry value="SelenniumFramework.PageObjectModel.SubmitOrderTest"/>
+        <listEntry value="SelenniumFramework.PageObjectModel.ErrorvalidationTest"/>
+        <listEntry value="SelenniumFramework.TestComponent.BaseTest"/>
+        <listEntry value="SeleniumFrameWork.Data.DataReader"/>
+        <listEntry value="SelenniumFramework.PageObjectModel.StandAlonewithExtentReport"/>
+        <listEntry value="SeleniumFramework.ReusableComponents.ReusableCOmponents"/>
+    </listAttribute>
+    <listAttribute key="org.testng.eclipse.METHOD_TEST_LIST"/>
+    <listAttribute key="org.testng.eclipse.PACKAGE_TEST_LIST"/>
+    <stringAttribute key="org.testng.eclipse.PRE_DEFINED_LISTENERS" value=""/>
+    <intAttribute key="org.testng.eclipse.TYPE" value="1"/>
+</launchConfiguration>

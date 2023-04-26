@@ -1,0 +1,5 @@
+package SelenniumFramework.Resources;
+
+public class ExtentReportTestNG {
+
+}

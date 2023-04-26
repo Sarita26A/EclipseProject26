@@ -1,0 +1,6 @@
+package SelenniumFramework.PageObjectModel;
+
+public class BaseTest {
+	
+
+}

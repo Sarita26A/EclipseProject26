@@ -1,0 +1,46 @@
+package SelenniumFramework.PageObjectModel;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class StandAlonewithExtentReport {
+	ExtentReports extent;
+	@Test
+	public void initialDemo() 
+	{
+		ExtentTest test=extent.createTest("initialDemo");
+		ChromeOptions options=new ChromeOptions();
+		options.addArguments("--remote-allow-origins=*");
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver=new ChromeDriver(options);
+		driver.get("https://rahulshettyacademy.com/");
+		System.out.println(driver.getTitle());
+		driver.close();
+		//test.fail("Initial Demo failed");
+		extent.flush();
+	}
+	@BeforeMethod
+	public void reportsConfig() 
+	{
+		String filePath=System.getProperty("user.dir")+"\\reports\\index.html";
+		ExtentSparkReporter reporter=new ExtentSparkReporter(filePath);
+		reporter.config().setReportName("Web Automation Results");
+		reporter.config().setDocumentTitle("Test Results");
+		extent =new ExtentReports();
+		extent.attachReporter(reporter);
+		extent.setSystemInfo("Tester", "RahulShetty");
+	
+	
+		
+		
+	}
+
+}

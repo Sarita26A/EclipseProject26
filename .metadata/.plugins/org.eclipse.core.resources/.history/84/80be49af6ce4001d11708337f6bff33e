@@ -1,0 +1,90 @@
+package firstmaven.ReadingExcelFile;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class DataDriven {
+	
+	//Identify column which has value "TedstCases" by scanning first Row
+	//Once column is identified scan each from for that column to find "Purchase" keyword is present
+	//If Purchase keyword is present then send all the data from the excel to the test case
+	public static ArrayList<String> getData() throws FileNotFoundException 
+	{
+		ArrayList<String> array=new ArrayList<>();
+		FileInputStream fis=new FileInputStream(new File("D:\\Training\\ExcelFiles\\ReadExcelFile.xlsx"));
+			XSSFWorkbook workBook = null;
+			XSSFSheet sheetData=null;
+			try {
+				workBook = new XSSFWorkbook(fis);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+			int numberOfSheet=workBook.getNumberOfSheets();
+			for(int i=0;i<numberOfSheet;i++) 
+			{
+				String sheet=workBook.getSheetName(i); //Grab the name of Sheet
+				//System.out.println(sheet);
+				if(sheet.equals("TestData")) 
+				{
+					 sheetData=workBook.getSheetAt(i); //sheetData contains all the information of sheet
+					 Iterator<Row> rows=sheetData.rowIterator(); // Iterating through each of the row
+					 Row firstRow=rows.next();
+					 Iterator<Cell>cells =firstRow.cellIterator();// getting the cells
+					 int column=0;
+					 int counter=0;
+					 while(cells.hasNext()) //return true if it has next value
+					 {
+						 Cell value=cells.next();
+						 //System.out.println(value.getStringCellValue());
+						 if(value.getStringCellValue().equals("TestCases")) 
+						 {
+							 column=counter;
+							 
+							 
+							 
+						 }
+						 counter++;
+					 }
+					 System.out.println("Column "+ column);
+					//Once column is identified scan the complete column to search Purchase
+					 while(rows.hasNext()) 
+					 {
+						 Row r= rows.next();
+						if(r.getCell(column).getStringCellValue().equals("Purchase"))
+								 {
+							 		Iterator<Cell> cv=r.cellIterator();
+							 		while(cv.hasNext()) 
+							 		{
+							 			//System.out.println(cv.next().getStringCellValue());
+							 			array.add(cv.next().getStringCellValue());
+							 		}
+							 
+								 }	
+							 
+					 }	 
+				}
+			}
+			return array;
+
+		}
+		
+	
+
+	public static void main(String[] args) throws FileNotFoundException 
+	{
+		ArrayList<String>abc=getData();
+		System.out.println(abc);
+		
+	}
+}

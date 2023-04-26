@@ -1,0 +1,5 @@
+package SelenniumFramework.TestComponent;
+
+public class BaseTest {
+
+}

@@ -1,0 +1,24 @@
+package firstmaven.ReadingExcelFile;
+
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+
+public class sampleTest {
+
+	public static void main(String[] args) throws FileNotFoundException {
+		// TODO Auto-generated method stub
+		DataDriven d=new DataDriven();
+		String str="Purchase";
+		ArrayList<String> a=d.getData(str);
+		System.out.println(a);
+		System.out.println(a.get(0));
+		System.out.println(a.get(1));
+		System.out.println(a.get(2));
+		System.out.println(a.get(3));
+		//example
+		
+		
+
+	}
+
+}

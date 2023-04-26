@@ -1,0 +1,60 @@
+package SelenniumFramework.PageObjectModel;
+
+import java.time.Duration;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class SubmitOrderTest{
+    
+  @Test
+  public void shouldAnswerWithTrue() throws InterruptedException 
+  
+  {	
+	 String countryName="India";
+	 String productName="ZARA COAT 3";
+	 ChromeOptions options = new ChromeOptions();
+	 options.addArguments("--remote-allow-origins=*");
+	 WebDriverManager.chromedriver().setup();
+	 WebDriver driver=new ChromeDriver(options);
+	 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	 LoginPage loginPage=new LoginPage(driver);
+	 loginPage.gotoLoginPage();
+	 ProductCatalogue productCatalogue=loginPage.loginToApplication("sarita_25a@yahoo.co.in", "Market12345^");
+	
+	 List<WebElement> products=productCatalogue.getProductList();
+	 productCatalogue.addProductToCart(productName);
+	 productCatalogue.gotoCart();
+	 CartPage cartPage=new CartPage(driver);
+	 Boolean match= cartPage.productsInCartPage(productName);
+	 Assert.assertTrue(match);
+	 CheckOut checkOut=cartPage.gotoCheckout();
+	 checkOut.selectCountry(countryName);
+	 ConfirmationPage confirmationPage=checkOut.submitOrder();
+	 String confirmationMessage=confirmationPage.getConfirmationMessage();
+	 System.out.println(confirmationMessage);
+	 Assert.assertTrue(confirmationMessage.equalsIgnoreCase("THANKYOU FOR THE ORDER."));
+			 
+	 
+	 
+	 
+  }
+	  
+	
+	  
+    
+  
+}

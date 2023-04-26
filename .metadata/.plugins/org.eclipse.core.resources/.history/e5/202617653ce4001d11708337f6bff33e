@@ -1,0 +1,72 @@
+package firstmaven.ReadingExcelFile;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Iterator;
+
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class DataDriven {
+
+	public static void main(String[] args) throws FileNotFoundException {
+		FileInputStream fis=new FileInputStream(new File("D:\\Training\\ExcelFiles\\ReadExcelFile.xlsx"));
+			XSSFWorkbook workBook = null;
+			XSSFSheet sheetData=null;
+			try {
+				workBook = new XSSFWorkbook(fis);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+			int numberOfSheet=workBook.getNumberOfSheets();
+			for(int i=0;i<numberOfSheet;i++) 
+			{
+				String sheet=workBook.getSheetName(i);
+				System.out.println(sheet);
+				if(sheet.equals("TestData")) 
+				{
+					 sheetData=workBook.getSheetAt(i);
+					 int totalRow=sheetData.getLastRowNum();
+					 Row row=sheetData.getRow(totalRow);
+					 
+					 
+					 System.out.println(totalRow);
+					 
+					 System.out.println(row.getLastCellNum());
+					 int cellnum=row.getLastCellNum();
+					 Cell cell=row.getCell(cellnum);
+					System.out.println(cell.getStringCellValue());
+					 System.out.println(cellnum);
+						/*
+						 * for(int j=0;j<row.getLastCellNum();j++) 
+						 * { 
+						 * Cell cell=row.getCell(cellnum);
+						 * System.out.println(cell.getStringCellValue());
+						 * 
+						 * }
+						 */
+					// System.out.println(sheetData.getTopRow());
+					 
+					
+					
+					
+				
+				}
+				
+			/*
+			 * Iterator<Row> rows=sheetData.iterator(); Row firstRow=rows.next();
+			 * Iterator<Cell> cells=firstRow.cellIterator(); while(cells.hasNext()) {
+			 * 
+			 * }
+			 */
+			
+			}
+	}
+
+}

@@ -1,0 +1,33 @@
+package SelenniumFramework.PageObjectModel;
+
+import java.util.List;
+
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import SelenniumFramework.TestComponent.BaseTest;
+
+public class ErrorvalidationTest extends BaseTest{
+	
+	@Test(groups={"ErroHandling"})
+	public void loginPagevalidation() 
+	{
+		loginPage.loginToApplication("sarita_25a@yahoo.co.in", "Market@12345^");
+		Assert.assertEquals("Incorrect email or password", loginPage.getErrorMessage());
+	}
+	@Test
+	public void productValidationTest() 
+	{
+		 String productName="ZARA COAT 3";
+		 ProductCatalogue productCatalogue=loginPage.loginToApplication("sarita_25a@yahoo.co.in", "Market12345^");
+		 List<WebElement> products=productCatalogue.getProductList();
+		 productCatalogue.addProductToCart(productName);
+		 CartPage cartPage=productCatalogue.gotoCart();
+		 Boolean match= cartPage.productsInCartPage("ZARA COAT 33");
+		 Assert.assertFalse(match);
+	}
+
+	
+
+}
